@@ -1,0 +1,79 @@
+ <!--
+
+            <div class="row">
+                <div class="column-66">
+                    <h1 class="xlarge-font"><b>@item.name</b></h1>
+                    <h1 class="large-font" style="color:MediumSeaGreen;"><b>Price: @item.price $</b></h1>
+                    <p><span style="font-size:36px">Description : @item.description.</span></p>
+                    <a class="button" href="/Product/ShowProductDetails/@item.id">Details</a>
+                    <a class="button" href="/Product/ProductToCart/@item.id">Add To Cart</a>
+                </div>
+                <div class="column-33">
+                    <img src="~/@item.image" width="335" height="471">
+                </div>
+            </div>
+                -->
+
+
+<style>
+    <style >
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+        padding: 64px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both
+    }
+
+    .column-66 {
+        float: left;
+        width: 66.66666%;
+        padding: 20px;
+    }
+
+    .column-33 {
+        float: left;
+        width: 33.33333%;
+        padding: 20px;
+    }
+
+    .large-font {
+        font-size: 48px;
+    }
+
+    .xlarge-font {
+        font-size: 64px
+    }
+
+    .button {
+        border: none;
+        color: white;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #4CAF50;
+    }
+
+    img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }
+
+
+    img {
+        margin: auto;
+    }
+    }
+</style>

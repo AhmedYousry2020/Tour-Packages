@@ -1,0 +1,9 @@
+    public ActionResult DeleteProduct_Cart(int P_id)
+        {
+            Cart cart = new Cart();
+            cart = (from CART in db.cart where CART.product_id==p_id select CART).FirstOrDefault();
+            db.cart.Remove(cart);
+            db.SaveChanges();
+
+            return RedirectToAction("ShowProducts");
+        }

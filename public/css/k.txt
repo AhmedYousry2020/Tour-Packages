@@ -1,0 +1,108 @@
+ProductController:
+ 
+ [HttpGet]
+        public ActionResult AddProductToCart(int id)
+        {
+            Cart cart = new Cart();
+            cart.product_id = id;
+            cart.added_at = DateTime.Now;
+            mydb.cart.Add(cart);
+            mydb.SaveChanges();
+            return RedirectToAction("CartView");
+        }
+
+GetProducts view:
+  <div class="row" style="padding-left:14px">
+                                <a class="btn btn-success btn-sm" href="/Product/GetProduct/@item.id">Details</a>
+                                <a class="btn btn-danger btn-sm" href="/Product/AddProductToCart/@item.id">Add To Cart</a>
+
+                            </div>
+
+
+
+//Product Model:
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
+
+namespace TaskIa.Models
+{
+    public class Product
+    {
+        [Key]
+        public int id { get; set; }
+        public string name { get; set; }
+        public int price { get; set; }
+        public string image { get; set; }
+        public string description { get; set; }
+        [ForeignKey("category")]
+        public int category_id { get; set; }
+        public virtual Category category { get; set; }
+        public virtual Cart cart { get; set; }
+
+    }
+}
+//Category Model:
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace TaskIa.Models
+{
+    public class Category
+    {
+        [Key]
+        public int id { get; set; }
+        public string name { get; set; }
+        public string number_of_products { get; set; }
+        public virtual ICollection<Product> products { get; set; }
+    }
+}
+//Cart Model:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace TaskIa.Models
+{
+    public class Cart
+    {
+        [Key]
+        [ForeignKey("product")]
+        public int product_id { get; set; }
+        public virtual Product product { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime added_at { get; set; }
+    }
+}
+iadbContext Model:
+
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+
+namespace TaskIa.Models
+{
+    public class iadbContext : DbContext
+    {
+        public iadbContext() : base("IAConnectionString") { 
+        
+        }        
+        public DbSet<Product> products { get; set; }
+        public DbSet<Category> categories { get; set; }
+        public DbSet<Cart> cart { get; set; }
+
+    }
+}
