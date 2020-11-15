@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link  rel="icon" href="">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/floating-labels/">
-
+    <link  rel="icon" href="{{asset('image/img1.png')}}">
     <!-- Bootstrap core CSS -->
 
 

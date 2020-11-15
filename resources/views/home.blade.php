@@ -65,7 +65,7 @@
 
     <div class="input-group md-form form-sm form-2 pl-0 col-sm-6 search">
 
-      <form style="width: 91%;" action="{{Route('home')}}" method="get" id="formsearch">
+      <form style="width: 95%;" action="{{Route('home')}}" method="get" id="formsearch">
         <i class="fa fa-plane" aria-hidden="true" style="position: absolute;padding: 12px;color: cadetblue; "></i>
 
       <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search For Destination" name="search" aria-label="Search" id="search" style="font-weight:bold ;padding-left: 33px;">
@@ -97,6 +97,12 @@
 
 </div>
 <div class="container">
+@if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{session()->get('success')}}
+                    </div>
+
+                @endif
 <h2 style="    font-size: 29px; font-weight: 700;letter-spacing: 0px;text-transform: none; margin: 20px;"><i class="fas fa-air-freshener" style="color: #007bff;margin-right: 10px; "></i>Top Packages  </h2>
 </div>
 @foreach($packages as $package)

@@ -23,9 +23,10 @@ class BookingController extends Controller
         'paymentMethod'=>'required',
         'individuals'=>'required',
         'name_on_card'=>'required',
-        'credit_number'=>'required',
-        'expiration'=>'required|',
-        'cvv'=>'required'
+        'credit_number'=>'required|digits:14|numeric',
+        'expiration'=>'required|date',
+        // 'expiration'=>'required|date_format:MM/DD',
+        'cvv'=>'required|min:3'
 
 
         ]);
@@ -51,7 +52,7 @@ class BookingController extends Controller
            }
 
 
-  session()->flash('success', __('booked_successfully'));
+        session()->flash('success', __('booked_successfully'));
          return redirect('/home');
 
 
